@@ -1,0 +1,4 @@
+﻿  chatbot.c
+C:\Users\cocov\source\repos\Project\Project\chatbot.c(334,16): warning C4047: '=': 'char **' differs in levels of indirection from 'char [3]'
+C:\Users\cocov\source\repos\Project\Project\chatbot.c(338,27): warning C4047: '=': 'char **' differs in levels of indirection from 'char [9]'
+  Project.vcxproj -> C:\Users\cocov\source\repos\Project\Debug\Project.exe
