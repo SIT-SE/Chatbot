@@ -309,6 +309,7 @@ int chatbot_do_save(int inc, char *inv[], char *response, int n) {
 int chatbot_is_smalltalk(const char *intent) {
 
 	/* to be implemented */
+	return compare_token(intent, "Hi") == 0 || compare_token(intent, "Hello") == 0 || compare_token(intent, "Goodbye") == 0 || compare_token(intent, "Bye") == 0 || compare_token(intent, "Thanks") == 0 || compare_token(intent, "Morning") == 0 || compare_token(intent, "Afternoon") == 0 || compare_token(intent, "Evening") == 0;
 
 	return 0;
 
@@ -328,7 +329,19 @@ int chatbot_is_smalltalk(const char *intent) {
 int chatbot_do_smalltalk(int inc, char *inv[], char *response, int n) {
 
 	/* to be implemented */
-
-	return 0;
-
+	if (compare_token(*inv, "Hi") == 0 || compare_token(*inv, "Hello") == 0) {
+		snprintf(response, n, "%s! How can I help you today?",*inv);
+		return 0;
+	}else if (compare_token(*inv, "Thanks") == 0){
+		snprintf(response, n, "You're Welcome! Anything else I can help you with?");
+		return 0;
+	}
+	else if (compare_token(*inv, "Morning") == 0 || compare_token(*inv, "Afternoon") == 0 || compare_token(*inv, "Evening") == 0) {
+		snprintf(response, n, "Good %s! How can I help you?", *inv);
+		return 0;
+	}
+	else {
+		snprintf(response, n, "Goodbye! See you again!");
+		return 1;
+	}
 }
