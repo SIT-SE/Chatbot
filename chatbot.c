@@ -44,6 +44,14 @@
 #include <string.h>
 #include "chat1002.h"
 
+#define MAX_REPLIES 5
+
+char * USER_GREETINGS[MAX_REPLIES] = {
+        "hello", "hi", "greetings", "sup","hey"  // contains the strings for smalltalk, change be changed to anything
+};
+char * CHATBOT_GREETINGS[MAX_REPLIES] = {
+        "hello", "hi", "greetings", "sup","hey" // contains the responses for the chatbot, change be changed to anything
+};
 
 /*
  * Get the name of the chatbot.
@@ -308,8 +316,34 @@ int chatbot_do_save(int inc, char *inv[], char *response, int n) {
  */
 int chatbot_is_smalltalk(const char *intent) {
 
-	/* to be implemented */
+	int ret;
+    int i = 0;
+    int its;
+    int goodbye;
+    int bye;
 
+    for (i = 0; i < MAX_REPLIES ; i++) {
+        ret = compare_token(intent,
+                            USER_GREETINGS[i]); // compare_token() is in main.c, it compares two strings and return as strcmp()
+        its = strncmp(intent, "it's", 4); // this is used to check if intent contains "it's"
+
+        goodbye = compare_token(intent,"goodbye"); // this is used to check if intent contains goodbye
+        bye = compare_token(intent,"bye"); // this is used to check if intent contains bye
+
+        if(ret == 0){
+            return 1;
+
+        }
+        if(its == 0){
+            return 1;
+        }
+        if(goodbye == 0){
+            return 1;
+        }
+        if(bye == 0){
+            return 1;
+        }
+    }
 	return 0;
 
 }
@@ -327,7 +361,34 @@ int chatbot_is_smalltalk(const char *intent) {
  */
 int chatbot_do_smalltalk(int inc, char *inv[], char *response, int n) {
 
-	/* to be implemented */
+	 int i;
+    int ret;
+    int its;
+    int goodbye;
+    int bye;
+
+    for (i = 0; i < MAX_REPLIES ; i++) {
+        ret = compare_token(inv[0],USER_GREETINGS[i]); // compare_token() used to compare what was typed with the outputs
+        if (ret == 0){
+            srand(time(NULL)); //// Initialization for seed for random reply, this ensures that the reply is truely random
+            int r = rand(); //Returns a pseudo-random integer between 0 and RAND_MAX.
+            int randomReply = r % MAX_REPLIES; //this will generate a random int for a random response to return
+            snprintf(response, n, CHATBOT_GREETINGS[randomReply]); // prints out in cmd line the response from chatbot
+        }
+        its = strncmp(inv[0],"it's",4); //  compare userinput with it's and store it as int its
+        if(its == 0){ //if user input contains it's
+            snprintf(response, n, "Indeed it is,%s",chatbot_username()); // prints out in cmd line the response from chatbot
+        }
+        goodbye = compare_token(inv[0],"goodbye"); //compares userinput with goodbye and store as int goodbye
+        if(goodbye == 0){ //if user input contains goodbye
+            return chatbot_do_exit(inc, inv, response, n); // prints out in cmd line the response from chatbot and exit the chatbot
+        }
+        bye = compare_token(inv[0],"bye");
+        if(bye == 0){
+            return chatbot_do_exit(inc, inv, response, n); // prints out in cmd line the response from chatbot and exit the chatbot
+        }
+    }
+    return 0;
 
 	return 0;
 

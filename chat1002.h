@@ -1,5 +1,5 @@
 /*
- * ICT1002 (C Language) Group Project.
+ * ICT1002 Assignment 2, 2018-19 Trimester 2.
  *
  * This file contains the definitions and function prototypes for all of
  * features of the ICT1002 chatbot.
