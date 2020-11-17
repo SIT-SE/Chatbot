@@ -1,0 +1,2 @@
+C:\Users\tshuj\Desktop\SJ work\1002-prog fund\C PROG\chatbox proj\chatbox\Debug\chatbox.exe
+C:\Users\tshuj\Desktop\SJ work\1002-prog fund\C PROG\chatbox proj\chatbox\Debug\chatbox.pdb
