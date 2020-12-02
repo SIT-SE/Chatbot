@@ -31,6 +31,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ICT1002_Group Project Assignment_Sample.ini" />
+		<Unit filename="chat1002.h" />
+		<Unit filename="chatbot.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="knowledge.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

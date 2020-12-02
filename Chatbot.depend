@@ -10,8 +10,13 @@
 1605606896 c:\users\mayma\onedrive\documents\github\chatbot\chat1002.h
 	<stdio.h>
 
-1605606896 source:c:\users\mayma\onedrive\documents\github\chatbot\knowledge.c
+1606910015 source:c:\users\mayma\onedrive\documents\github\chatbot\knowledge.c
 	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"chat1002.h"
+
+1606910654 source:c:\users\mayma\onedrive\documents\github\chatbot\chatbot.c
 	<stdio.h>
 	<string.h>
 	"chat1002.h"
